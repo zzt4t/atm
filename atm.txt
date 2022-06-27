@@ -42,23 +42,23 @@ void main()
 	printf("*****************************\n");
 	printf("**欢迎使用ATM自动取款机系统**\n");
 	printf("*****************************\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	printf("|    1  开户                |\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	printf("|    2  登陆                |\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	printf("|     请选择您的需求        |\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	scanf("%s",&x);
 	system("cls");
 	
 	switch(x)
 	{
-	case '1':system("cls");
+	 case '1':system("cls");
 		kaihu(head);   //调用开户函数
 		break;
 		
-	case '2':system("cls");
+	 case '2':system("cls");
 		denglu(head);   //调用登陆函数
 		break;
 		
@@ -74,38 +74,38 @@ void kaihu(struct per *head)
 	struct per *p1=NULL,*p2=NULL;   //p1,p2为定义链表指针
 	p1=(struct per*)malloc(sizeof(struct per));  //开辟内存单元
 	printf("请输入您的姓名：\n");  //请数据输入链表中
-    scanf("%s",p1->name);
-    printf("请设置您的卡号：\n");
-    scanf("%s",p1->ID);
-    printf("请设置您银行卡密码：\n");
-    scanf("%s",p1->mima);
-    p1->money=0;
-    p1->next=NULL;
-    printf("您的个人信息为");
+        scanf("%s",p1->name);
+        printf("请设置您的卡号：\n");
+        scanf("%s",p1->ID);
+        printf("请设置您银行卡密码：\n");
+        scanf("%s",p1->mima);
+        p1->money=0;
+        p1->next=NULL;
+        printf("您的个人信息为");
 	printf("姓名：%s \n卡号：%s \n余额：%4d\n",p1->name,p1->ID,p1->money);
 	if(NULL==head)           //为新用户开辟内存单元
-    {
+        {
 		head=(struct per *)malloc(sizeof(struct per));
 		head->next=p1;    //进行头插法，将其作为第一个节点
-    }
-    else    //为新增客户开辟内存单元
-    {
-		for(p2=head;p2->next!=NULL;p2=p2->next); //进行尾插
+        }
+       else    //为新增客户开辟内存单元
+       {
+  		for(p2=head;p2->next!=NULL;p2=p2->next); //进行尾插
 		p2->next=p1;
-    }
-    if((fp=fopen("save.txt","ab+"))==NULL) //打开文件
-    {
+       }
+       if((fp=fopen("save.txt","ab+"))==NULL) //打开文件
+       {
 		printf("cannot poen file\n");
 		return;
-    }
-    if(fwrite(p1,sizeof(struct per),1,fp)!=1)  //将链表信息写入文件中
+       }
+       if(fwrite(p1,sizeof(struct per),1,fp)!=1)  //将链表信息写入文件中
 		printf("file write error\n");
-	fclose(fp);
-	printf("\n");
-	printf("恭喜您开户成功，请登录\n");
-	system("pause");
-	system("cls");
-	denglu(head);
+	  fclose(fp);
+	  printf("\n");
+	  printf("恭喜您开户成功，请登录\n");
+	  system("pause");
+	  system("cls");
+	  denglu(head);
 	
 }
 
@@ -126,7 +126,6 @@ void denglu(struct per *head)
 	p=(struct per*)malloc(sizeof(struct per));   //申请空间
 	head=p;
 	while(!feof(fp))       //循环读数据直到文件尾结束
-		
 	{
 		if(1!=fread(p,sizeof(struct per),1,fp))
 			break;   //如果没读到数据，跳出循环
@@ -206,8 +205,8 @@ void caidan(struct per *head)
 		scanf("%d",&i);
 		if(i<7||i>0)
 		{
-			switch(i)
-			{
+		  switch(i)
+	              { 
 			case 1:qukuan(head);       //调用银行取款函数
 				system("pause");
 				system("cls");
@@ -215,20 +214,20 @@ void caidan(struct per *head)
 			case 2:system("cls");
 				chaxun(head);  //调用银行查询函数
 				break;
-            case 3:system("cls");
+                        case 3:system("cls");
 				zhuanzhang(head);  //调用银行转账函数
 				break;
-            case 4:system("cls");
+                       case 4:system("cls");
 				xgmm(head);  //调用银行修改密码函数
 				break;
-            case 5:system("cls");
+                       case 5:system("cls");
 				cunkuan(head);  //调用银行存款函数
 				break;
-            case 6:system("cls");
+                       case 6:system("cls");
 				tuichu();  //调用银行退出函数
 				break;
 				
-			}
+		    }
 		}
 		else
 		{
@@ -266,13 +265,13 @@ void qukuan(struct per *head)
 	fclose(fp);
 	system("cls");
 	printf("************************************\n");
-    printf("**  1: 100元    *****    2:200元  **\n");
+        printf("**  1: 100元    *****    2:200元  **\n");
 	printf("************************************\n");
-    printf("**  3: 300元    *****    4:400元  **\n");
+        printf("**  3: 300元    *****    4:400元  **\n");
 	printf("************************************\n");
-    printf("**  5: 500元    *****    6:600元  **\n");
+        printf("**  5: 500元    *****    6:600元  **\n");
 	printf("************************************\n");
-    printf("请按要求选择您要取款的金额\n");
+        printf("请按要求选择您要取款的金额\n");
 	scanf("%d",&i);
 	if(i>6||i<=0)    //限制输入范围
 	{
@@ -381,10 +380,7 @@ void zhuanzhang(struct per *head)
 				if(fwrite(q,sizeof(per),1,fp)!=1)  //将数据重新写入文件
 					printf("file write error\n");
 				q->next=NULL;
-				fclose(fp);
-				
-				
-				
+				fclose(fp);  
 				system("pause");
 				system("cls");
 			}
@@ -505,13 +501,13 @@ void cunkuan(struct per *head)
 	system("cls");
 	printf("您卡上原有余额%d元\n",q->money);   
 	printf("************************************\n");
-    printf("**  1: 100元    *****    2:200元  **\n");
+        printf("**  1: 100元    *****    2:200元  **\n");
 	printf("************************************\n");
-    printf("**  3: 300元    *****    4:400元  **\n");
+        printf("**  3: 300元    *****    4:400元  **\n");
 	printf("************************************\n");
-    printf("**  5: 500元    *****    6:600元  **\n");
+        printf("**  5: 500元    *****    6:600元  **\n");
 	printf("************************************\n");
-    printf("请选择您要存入的余额\n");
+        printf("请选择您要存入的余额\n");
 	scanf("%d",&i);
 	if(i>6||i<=0)
 	{
@@ -549,13 +545,13 @@ void tuichu()
 	printf("*****************************\n");
 	printf("**欢迎使用ATM自动取款机系统**\n");
 	printf("*****************************\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	printf("|    1  开户                |\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	printf("|    2  登陆                |\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	printf("|     请选择您的需求        |\n");
-    printf("——————————————\n");
+        printf("——————————————\n");
 	scanf("%s",&x);
 	system("cls");
 	
